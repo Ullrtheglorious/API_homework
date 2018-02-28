@@ -7,15 +7,15 @@ function APISearch() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        var resultDiv = $("<div class='gifStill' data-state='still'> ");
+        var resultDiv = $("<div class='gifStill d-flex flex-sm-wrap' data-state='still'> ");
 
         for (var i = 0; i < response.data.length; i++) {
             var p1 = $("<p class='rating'>").text("Rated: " + response.data[i].rating);
-            var gifUrl = response.data[i].images.fixed_height_small_still.url;
-            var gif = $("<img class='gifImg col-sm-12'>");
+            var gifUrl = response.data[i].images.fixed_height_still.url;
+            var gif = $("<img class='gifImg'>");
             gif.attr("src", gifUrl);
-            gif.attr({ 'data-animate': response.data[i].images.fixed_height_small.url });
-            gif.attr({ 'data-still': response.data[i].images.fixed_height_small_still.url });
+            gif.attr({ 'data-animate': response.data[i].images.fixed_height.url });
+            gif.attr({ 'data-still': response.data[i].images.fixed_height_still.url });
             gif.attr({ 'data-state': 'still' });
             resultDiv.append(p1);
             resultDiv.append(gif);
@@ -42,7 +42,7 @@ function renderButtons() {
     $("#buttons-view").empty();
     for (var i = 0; i < games.length; i++) {
         var a = $("<button>");
-        a.addClass("game-btn");
+        a.addClass("game-btn btn-outline-dark");
         a.attr("data-name", games[i]);
         a.text(games[i]);
         $("#buttons-view").append(a);
