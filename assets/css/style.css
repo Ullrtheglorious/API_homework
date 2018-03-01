@@ -1,9 +1,15 @@
-.gifImg {
-    padding: 0px;
-    margin-bottom: 10px;
+body {
+    background-repeat: no-repeat;
+    background: url("../pictures/giphy.gif") no-repeat center center fixed; 
+    background-size: cover;
 }
 .gifImg{
-    margin-top:40px;
+    border: solid black 2px;
+    border-radius: 10px;
+    width: 350px;
+    height: 250px;
+    margin: 20px 50px 10px 0px;
+    padding: 0px;
 }
 .input-group{
     margin-top:20px;
@@ -12,4 +18,7 @@
 .game-btn {
     margin-right: 5px;
     margin-bottom: 5px;
+}
+#game-view {
+    text-align: center;   
 }
