@@ -1,5 +1,5 @@
 var games = ["Metal Gear", "Red Dead Redemption", "Destiny", "PUBG", "Rainbow Six Siege", "Far Cry", "GTA V", "Fallout 4", "Dark Souls", "God of War"];
-
+var gameSearch;
 function APISearch() {
     var gameSearch = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gameSearch + "&limit=10&api_key=gVFYG1uGKnUOa3ncEYW83t1gDOKOWH7y";
@@ -26,6 +26,33 @@ function APISearch() {
         hoverAnimate();
     });
 }
+function getMore() {
+    var queryMoreURL = "https://api.giphy.com/v1/gifs/search?q=" + gameSearch + "&limit=10&offset=10&api_key=gVFYG1uGKnUOa3ncEYW83t1gDOKOWH7y";
+    $.ajax({
+        url: queryMoreURL,
+        method: "GET"
+    }).then(function (response) {
+        var resultDiv = $("<div class='gifStill' data-state='still'> ");
+        for (var i = 0; i < response.data.length; i++) {
+            var p1 = ("Rated: " + response.data[i].rating);
+            var gifUrl = response.data[i].images.fixed_height_still.url;
+            var gif = $("<img class='gifImg col-sm-6'>");
+            gif.attr('title', p1);
+            gif.attr("src", gifUrl);
+            gif.attr({ 'data-animate': response.data[i]
+            .images.fixed_height.url });
+            gif.attr('data-rating', p1);
+            gif.attr({ 'data-still': response.data[i].images.fixed_height_still.url });
+            gif.attr({ 'data-state': 'still' });
+            // resultDiv.append(p1);
+            resultDiv.append(gif);
+            $('#game-view').append(resultDiv)
+        }
+        hoverAnimate();
+    });
+
+}
+
 function hoverAnimate() {
     $('.gifImg').hover(function () {
         if ($(this).attr('data-state') === 'still') {
@@ -57,4 +84,5 @@ $("#add-game").on("click", function (event) {
     renderButtons();
 });
 $(document).on("click", ".game-btn", APISearch);
+$(document).on("click", "#add-more", getMore);
 renderButtons();
