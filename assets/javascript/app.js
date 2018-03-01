@@ -2,7 +2,7 @@ var games = ["Metal Gear", "Red Dead Redemption", "Destiny", "PUBG", "Rainbow Si
 
 function APISearch() {
     var gameSearch = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gameSearch + "&limit=10&api_key=gVFYG1uGKnUOa3ncEYW83t1gDOKOWH7y";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gameSearch + "&limit=10&api_key=gVFYG1uGKnUOa3ncEYW83t1gDOKOWH7y";
     $.ajax({
         url: queryURL,
         method: "GET"
