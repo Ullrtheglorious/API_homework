@@ -8,7 +8,7 @@ body {
     border-radius: 10px;
     width: 350px;
     height: 250px;
-    margin: 20px 50px 10px 0px;
+    margin: 20px 40px 10px 0px;
     padding: 0px;
 }
 .input-group{
@@ -21,4 +21,11 @@ body {
 }
 #game-view {
     text-align: center;   
+}
+#add-more{
+    display: none;
+}
+.newBtn {
+    text-align: center;
+    margin: 30px;
 }
