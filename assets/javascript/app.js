@@ -1,4 +1,4 @@
-var games = ["Metal Gear", "Red Dead Redemption", "Destiny", "PUBG", "Rainbow Six Siege", "Far Cry", "GTA V", "Fallout 4", "Dark Souls", "God of War"];
+var games = [];
 var offSet = 10;
 var addMore;
 function APISearch() {
